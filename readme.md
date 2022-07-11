@@ -1,0 +1,1 @@
+This is a multiple choice quiz that saves the high score.
