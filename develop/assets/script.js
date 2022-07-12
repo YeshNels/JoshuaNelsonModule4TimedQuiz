@@ -1,5 +1,6 @@
 startEl = document.querySelector('#start');
 questionEl = document.querySelector('#quizHeader');
+answersEl = document.querySelectorAll('.answers')
 answerA = document.querySelector('#quizA');
 answerB = document.querySelector('#quizB');
 answerC = document.querySelector('#quizC');
@@ -31,7 +32,27 @@ function startTimer(){
         }
     }, 1000);
 }
+function penaltyCheck(event){
+    console.log(event.target);
+    var state = event.target.getAttribute("data-state");
+    if (state == "correct") {
+        penaltyEl.textContent="Correct!";
+    }
+    else {
+        secondsLeft -= 10;
+        penaltyEl.textContent="Wrong!";
+    }
+}
+function reset(){
+    secondsLeft = 60;
+    quizEl.style.visibility = "hidden";
+}
+answerA.addEventListener("click", penaltyCheck);
+answerB.addEventListener("click", penaltyCheck);
+answerC.addEventListener("click", penaltyCheck);
+answerD.addEventListener("click", penaltyCheck);
 function quizFirst(){
+    secondsLeft = 60;
     quizEl.style.visibility = "visible";
     questionEl.textContent = "Which of these is not a main programming language?"
     answerA.textContent = "Console";
@@ -115,3 +136,4 @@ function youLose() {
     questionEl.textContent = "Sorry, time's up!";
 }
 startEl.addEventListener("click", startQuiz);
+resetBtn.addEventListener("click", reset);
