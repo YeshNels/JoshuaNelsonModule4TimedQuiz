@@ -11,7 +11,7 @@ resetBtn = document.querySelector('#reset');
 quizEl = document.querySelector('.quizContain');
 var secondsLeft = 60;
 var isWin = false;
-
+//TODO Ax everything and start project over with an array for all of the plaintext data: questions, answers and possibly data states as well.
 function startQuiz(){
     startTimer();
     quizFirst();
@@ -42,10 +42,11 @@ function penaltyCheck(event){
     var state = event.target.getAttribute("data-state");
     if (state == "correct") {
         penaltyEl.textContent="Correct!";
+        console.log("Good!")
     }
     else {
         secondsLeft -= 10;
-        console.log(secondsLeft);
+        console.log(secondsLeft, "Bad!");
         penaltyEl.textContent="Wrong!";
     }
 }
@@ -53,6 +54,7 @@ function penaltyCheck(event){
 function reset(){
     isWin = false;
     penaltyEl.textContent="";
+    timerEl.textContent="";
     secondsLeft = 60;
     quizEl.style.visibility = "hidden";
     //answerA.removeEventListener("click");
@@ -134,10 +136,10 @@ function quizFourth(){
     answerB.addEventListener("click", quizEnd);
     answerC.addEventListener("click", quizEnd);
     answerD.addEventListener("click", quizEnd);
-    answerA.removeEventListener("click", quizFourth);
-    answerB.removeEventListener("click", quizFourth);
-    answerC.removeEventListener("click", quizFourth);
-    answerD.removeEventListener("click", quizFourth);
+    answerA.removeEventListener("click", quizThird);
+    answerB.removeEventListener("click", quizThird);
+    answerC.removeEventListener("click", quizThird);
+    answerD.removeEventListener("click", quizThird);
 }
 
 function quizEnd(){

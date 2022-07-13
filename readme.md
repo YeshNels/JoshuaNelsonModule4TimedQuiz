@@ -1,1 +1,2 @@
 This is a multiple choice quiz that saves the high score.
+My initial thought was to design this quiz around event listeners due to how important the use of clicking on buttons would be for this project. However, the multiple listeners for the same type of event on the same element produce frequent conflicts. The next step for this project is rewriting the entire codebase to instead feature an array that progresses through its information each time a button is pressed to represent each question being cycled out.
